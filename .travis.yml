@@ -2,7 +2,7 @@ dist: trusty
 sudo: required
 language: bash
 before_install:
-- curl https://raw.githubusercontent.com/express42/otus-homeworks/2019-02/run.sh | bash
+- curl https://raw.githubusercontent.com/dimamik2020/otus_homeworks/play_travis/run_test.sh | bash
 notifications:
   slack:
     secure: Ov8saLcI5lr2fi5ENV+UjOg3E4cGtOBBeivrWK0hH+du1pWAoVhqf5tplMJ7eBe9FnEQvR33NGahjKjuYyNQr3fLfacs7/2LWdmm5SV0vTHbZ0+x/Pw06R1T9lS17krfN59xnlXGzrKwZ3BwD0DptNp8mIsV12bm7z/rGCTUow4V7HzzXn710YKtNmuIA+DyLb5u6EPQbf3vNifo7/8cJFS8YhAyMfH6zUGE5izP/zsfLXOXnKx8FHUZe1VU+WYbzd2VbaNlECT/dZE2dFgWXNVqyUEM8Wm5SxFWvGwneO0e1tZDBpBAhZPvj/5tuw+dVYiiSQClU2/0fmD07Nv8S5rvZOJ89UnbMzr4GSIcw7hCuzRBWEFICUfn6MTfDdj3cx7wxmBnYRNNovE5zpNcVRhOubvu+bu3C3LZwbmOoCHAxShNIkN2sJUDnlU9lSw84eLR9gHCZ8HKf/KqH3D31J+TyruxMwVEMA1EFo5lD3aZH5kDp2qe1hELCDpkSBfGJnE+TXuySayMbUgh2zNf5MQF3xEvuvHKxZm+N7xhMLbkrsWk781CdLxYqQkv3kmXeYI4w7au1KUQ8pe/E4pIPJIswJMRQESPQAsKtERdCvlZ3QGy6Okd1jgdlm5Plw9ZDjWWYl+iMiHQf6bY2hNncq0bqfTYWblcm83C5PDWSKo=

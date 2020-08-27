@@ -31,5 +31,5 @@ if [ -f $HOMEWORK_RUN ]; then
 	# ssh -i id_rsa_test -p 33433 root@localhost "cd /srv && BRANCH=$BRANCH $HOMEWORK_RUN"
 else
 	echo "We don't have tests for this homework"
-	exit 0
+	exit 1
 fi
