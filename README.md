@@ -1,16 +1,20 @@
-Коннектимся в одну строчку на internalhost через bastion-хост:
+ДЗ. Основные сервисы Google Cloud Platform GCP
 
-$> ssh -J Dima@34.105.235.15 Dima@10.154.0.4
+Скрипт для запуска машины с пепедачей ей startup-скрипта:
 
-Прописываем в ~/.ssh/config и коннектимся через $> ssh internalhost
+gcloud compute instances create reddit-app\
+  --boot-disk-size=10GB \
+  --image-family ubuntu-1604-lts \
+  --image-project=ubuntu-os-cloud \
+  --machine-type=g1-small \
+  --tags puma-server \
+  --restart-on-failure \
+  --metadata-from-file startup-script=startup.sh
 
-### The Bastion Host
-Host bastion
-  HostName 34.105.235.15
-  User Dima
+Скрипт, создающий правило для puma-сервера
 
-### The Remote Host
-Host internalhost
-  HostName 10.154.0.4
-  ProxyJump bastion
-  User Dima
+gcloud compute firewall-rules create puma-server \
+--allow=tcp:9292 \
+--direction=INGRESS \
+--source-ranges=0.0.0.0/0 \
+--target-tags=puma-server

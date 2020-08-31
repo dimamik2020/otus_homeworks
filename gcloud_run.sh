@@ -1,3 +1,5 @@
+#!/bin/bash
+
 gcloud compute instances create reddit-app\
   --boot-disk-size=10GB \
   --image-family ubuntu-1604-lts \
@@ -6,3 +8,4 @@ gcloud compute instances create reddit-app\
   --tags puma-server \
   --restart-on-failure \
   --metadata-from-file startup-script=startup.sh
+
