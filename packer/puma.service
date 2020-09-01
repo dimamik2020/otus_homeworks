@@ -7,10 +7,10 @@ Type=simple
 User=Dima
 WorkingDirectory=/home/Dima/reddit/
 Environment=RAILS_ENV=production
-
-ExecStart=puma -d
+ExecStart=/usr/local/bin/puma -d
 Restart=always
 KillMode=process
+TimeoutSec=15
 
 [Install]
 WantedBy=multi-user.target
