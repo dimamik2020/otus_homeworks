@@ -18,3 +18,6 @@ gcloud compute firewall-rules create puma-server \
 --direction=INGRESS \
 --source-ranges=0.0.0.0/0 \
 --target-tags=puma-server
+
+ДЗ Практика. Сборка образа VM при помощи Packer
+
