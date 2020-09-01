@@ -1,21 +1,4 @@
 #!/bin/bash
-gcloud compute firewall-rules create puma-server \
---allow=tcp:9292 \
---direction=INGRESS \
---source-ranges=0.0.0.0/0 \
---target-tags=puma-server
-#!/bin/bash
-
-gcloud compute instances create reddit-app\
-  --boot-disk-size=10GB \
-  --image-family ubuntu-1604-lts \
-  --image-project=ubuntu-os-cloud \
-  --machine-type=g1-small \
-  --tags puma-server \
-  --restart-on-failure \
-  --metadata-from-file startup-script=startup.sh
-
-#!/bin/bash
 apt update
 apt install -y ruby-full ruby-bundler build-essential
 #!/bin/bash
@@ -30,4 +13,5 @@ sudo systemctl enable mongod
 cd ~/
 git clone -b monolith https://github.com/express42/reddit.git
 cd reddit && bundle install
-puma -d
+##puma -d
+sudo systemctl enable puma

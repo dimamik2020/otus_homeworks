@@ -1,0 +1,16 @@
+[Unit]
+Description=Puma HTTP Server
+After=network.target
+
+[Service]
+Type=simple
+User=Dima
+WorkingDirectory=/home/Dima/reddit/
+Environment=RAILS_ENV=production
+
+ExecStart=puma -d
+Restart=always
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
