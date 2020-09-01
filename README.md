@@ -21,3 +21,7 @@ gcloud compute firewall-rules create puma-server \
 
 ДЗ Практика. Сборка образа VM при помощи Packer
 
+immutable_run.sh
+
+Собирает конфиги вместе, строит образ Packer-ом, создаёт правило файрвола,
+запускает инстанс из построенного ранее образа
