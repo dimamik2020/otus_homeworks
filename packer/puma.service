@@ -7,7 +7,7 @@ Type=simple
 User=Dima
 WorkingDirectory=/home/Dima/reddit/
 Environment=RAILS_ENV=production
-ExecStart=/usr/local/bin/puma -d
+ExecStart=/bin/bash -lc 'puma'
 Restart=always
 KillMode=process
 TimeoutSec=15
