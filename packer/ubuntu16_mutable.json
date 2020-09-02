@@ -11,5 +11,12 @@
             "ssh_username": "Dima",
             "machine_type": "f1-micro"
         }
+    ],
+      "provisioners": [
+		{
+            "type": "shell",
+            "script": "./scripts/startup_mutable.sh",
+            "execute_command": "sudo {{.Path}}"
+        }
     ]
 }
