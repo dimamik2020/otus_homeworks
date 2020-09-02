@@ -30,7 +30,5 @@
             "script": "./scripts/startup.sh",
             "execute_command": "sudo {{.Path}}"
         }
-	
     ]
-    
 }
