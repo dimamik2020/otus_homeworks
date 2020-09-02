@@ -13,3 +13,13 @@ variable "public_key_path" {
 variable "disk_image" {
   description = "Disk image"
 }
+
+variable "zone" {
+  # Zone for resources
+  default = "europe-west2-c"
+}
+
+variable "private_key_path" {
+  # private key path
+  description = "Path to private key"
+}

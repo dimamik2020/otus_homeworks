@@ -12,8 +12,8 @@ provider "google" {
 resource "google_compute_instance" "app" {
   name         = "reddit-app-terraformed"
   machine_type = "f1-micro"
-  zone         = "europe-west2-c"
-  tags = ["reddit-app"]
+  zone         = var.zone
+  tags         = ["reddit-app"]
 
   metadata = {
     # путь до публичного ключа
@@ -25,7 +25,7 @@ resource "google_compute_instance" "app" {
       image = var.disk_image
     }
 
-   }
+  }
   # определение сетевого интерфейса
   network_interface {
     # сеть, к которой присоединить данный интерфейс
@@ -35,18 +35,18 @@ resource "google_compute_instance" "app" {
   }
 
   connection {
-    host = google_compute_instance.app.network_interface.0.access_config.0.nat_ip
-    type = "ssh"
-    user = "Dima"
+    host  = google_compute_instance.app.network_interface.0.access_config.0.nat_ip
+    type  = "ssh"
+    user  = "Dima"
     agent = false
     # путь до приватного ключа
-    private_key = file("~/.ssh/id_rsa")
+    private_key = file(var.private_key_path)
   }
 
 
 
   provisioner "file" {
-    source = "../packer/puma.service"
+    source      = "../packer/puma.service"
     destination = "/tmp/puma.service"
   }
   provisioner "remote-exec" {
@@ -63,7 +63,7 @@ resource "google_compute_firewall" "firewall_puma" {
   # Какой доступ разрешить
   allow {
     protocol = "tcp"
-    ports = ["9292"]
+    ports    = ["9292"]
   }
   # Каким адресам разрешаем доступ
   source_ranges = ["0.0.0.0/0"]
