@@ -6,8 +6,8 @@ provider "google" {
   # Версия провайдера
   #  version = "2.0.0"
   # ID проекта
-  project = "otus-hometasks"
-  region  = "europe-west-2"
+  project = var.project
+  region  = var.region
 }
 resource "google_compute_instance" "app" {
   name         = "reddit-app-terraformed"
@@ -17,12 +17,12 @@ resource "google_compute_instance" "app" {
 
   metadata = {
     # путь до публичного ключа
-    ssh-keys = "Dima:${file("~/.ssh/id_rsa.pub")}"
+    ssh-keys = "Dima:${file(var.public_key_path)}"
   }
   # определение загрузочного диска
   boot_disk {
     initialize_params {
-      image = "reddit-base"
+      image = var.disk_image
     }
 
    }
