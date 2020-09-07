@@ -1,0 +1,109 @@
+2020/09/02 17:32:51 [INFO] Terraform version: 0.13.1  
+2020/09/02 17:32:51 [INFO] Go runtime version: go1.14.7
+2020/09/02 17:32:51 [INFO] CLI args: []string{"/usr/bin/terraform", "plan"}
+2020/09/02 17:32:51 [DEBUG] Attempting to open CLI config file: /home/dimamik/.terraformrc
+2020/09/02 17:32:51 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2020/09/02 17:32:51 [DEBUG] ignoring non-existing provider search directory terraform.d/plugins
+2020/09/02 17:32:51 [DEBUG] ignoring non-existing provider search directory /home/dimamik/.terraform.d/plugins
+2020/09/02 17:32:51 [DEBUG] ignoring non-existing provider search directory /home/dimamik/.local/share/terraform/plugins
+2020/09/02 17:32:51 [DEBUG] ignoring non-existing provider search directory /usr/share/xfce4/terraform/plugins
+2020/09/02 17:32:51 [DEBUG] ignoring non-existing provider search directory /usr/local/share/terraform/plugins
+2020/09/02 17:32:51 [DEBUG] ignoring non-existing provider search directory /usr/share/terraform/plugins
+2020/09/02 17:32:51 [DEBUG] ignoring non-existing provider search directory /usr/share/terraform/plugins
+2020/09/02 17:32:51 [INFO] CLI command args: []string{"plan"}
+2020/09/02 17:32:51 [TRACE] Meta.Backend: no config given or present on disk, so returning nil config
+2020/09/02 17:32:51 [TRACE] Meta.Backend: backend has not previously been initialized in this working directory
+2020/09/02 17:32:51 [DEBUG] New state was assigned lineage "257d4869-48a5-06b7-ccca-04a1df141aa0"
+2020/09/02 17:32:51 [TRACE] Meta.Backend: using default local state only (no backend configuration, and no existing initialized backend)
+2020/09/02 17:32:51 [TRACE] Meta.Backend: instantiated backend of type <nil>
+2020/09/02 17:32:51 [TRACE] providercache.fillMetaCache: scanning directory .terraform/plugins
+2020/09/02 17:32:51 [TRACE] getproviders.SearchLocalDirectory: .terraform/plugins is a symlink to .terraform/plugins
+2020/09/02 17:32:51 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/hashicorp/google v3.37.0 for linux_amd64 at .terraform/plugins/registry.terraform.io/hashicorp/google/3.37.0/linux_amd64
+2020/09/02 17:32:51 [TRACE] providercache.fillMetaCache: including .terraform/plugins/registry.terraform.io/hashicorp/google/3.37.0/linux_amd64 as a candidate package for registry.terraform.io/hashicorp/google 3.37.0
+2020/09/02 17:32:52 [DEBUG] checking for provisioner in "."
+2020/09/02 17:32:52 [DEBUG] checking for provisioner in "/usr/bin"
+2020/09/02 17:32:52 [INFO] Failed to read plugin lock file .terraform/plugins/linux_amd64/lock.json: open .terraform/plugins/linux_amd64/lock.json: no such file or directory
+2020/09/02 17:32:52 [TRACE] Meta.Backend: backend <nil> does not support operations, so wrapping it in a local backend
+2020/09/02 17:32:52 [INFO] backend/local: starting Plan operation
+2020/09/02 17:32:52 [TRACE] backend/local: requesting state manager for workspace "default"
+2020/09/02 17:32:52 [TRACE] backend/local: state manager for workspace "default" will:
+ - read initial snapshot from terraform.tfstate
+ - write new snapshots to terraform.tfstate
+ - create any backup at terraform.tfstate.backup
+2020/09/02 17:32:52 [TRACE] backend/local: requesting state lock for workspace "default"
+2020/09/02 17:32:52 [TRACE] statemgr.Filesystem: preparing to manage state snapshots at terraform.tfstate
+2020/09/02 17:32:52 [TRACE] statemgr.Filesystem: existing snapshot has lineage "8d3d4207-4a68-12c4-b0ba-c4df0dcffe66" serial 26
+2020/09/02 17:32:52 [TRACE] statemgr.Filesystem: locking terraform.tfstate using fcntl flock
+2020/09/02 17:32:52 [TRACE] statemgr.Filesystem: writing lock metadata to .terraform.tfstate.lock.info
+2020/09/02 17:32:52 [TRACE] backend/local: reading remote state for workspace "default"
+2020/09/02 17:32:52 [TRACE] statemgr.Filesystem: reading latest snapshot from terraform.tfstate
+2020/09/02 17:32:52 [TRACE] statemgr.Filesystem: read snapshot with lineage "8d3d4207-4a68-12c4-b0ba-c4df0dcffe66" serial 26
+2020/09/02 17:32:52 [TRACE] backend/local: retrieving local state snapshot for workspace "default"
+2020/09/02 17:32:52 [TRACE] backend/local: building context for current working directory
+2020/09/02 17:32:52 [DEBUG] backend/local: will prompt for input of unset required variables [project public_key_path disk_image]
+2020/09/02 17:32:52 [DEBUG] command: asking for input: "var.disk_image"
+2020/09/02 17:33:01 [DEBUG] command: asking for input: "var.project"
+2020/09/02 17:33:03 [DEBUG] command: asking for input: "var.public_key_path"
+2020/09/02 17:33:05 [TRACE] terraform.NewContext: starting
+2020/09/02 17:33:05 [TRACE] terraform.NewContext: loading provider schemas
+2020/09/02 17:33:05 [TRACE] LoadSchemas: retrieving schema for provider type "registry.terraform.io/hashicorp/google"
+2020-09-02T17:33:05.947+0300 [INFO]  plugin: configuring client automatic mTLS
+2020-09-02T17:33:06.196+0300 [DEBUG] plugin: starting plugin: path=.terraform/plugins/registry.terraform.io/hashicorp/google/3.37.0/linux_amd64/terraform-provider-google_v3.37.0_x5 args=[.terraform/plugins/registry.terraform.io/hashicorp/google/3.37.0/linux_amd64/terraform-provider-google_v3.37.0_x5]
+2020-09-02T17:33:06.200+0300 [DEBUG] plugin: plugin started: path=.terraform/plugins/registry.terraform.io/hashicorp/google/3.37.0/linux_amd64/terraform-provider-google_v3.37.0_x5 pid=17446
+2020-09-02T17:33:06.200+0300 [DEBUG] plugin: waiting for RPC address: path=.terraform/plugins/registry.terraform.io/hashicorp/google/3.37.0/linux_amd64/terraform-provider-google_v3.37.0_x5
+2020-09-02T17:33:06.249+0300 [INFO]  plugin.terraform-provider-google_v3.37.0_x5: configuring server automatic mTLS: timestamp=2020-09-02T17:33:06.249+0300
+2020-09-02T17:33:06.369+0300 [DEBUG] plugin.terraform-provider-google_v3.37.0_x5: plugin address: address=/tmp/plugin850671890 network=unix timestamp=2020-09-02T17:33:06.369+0300
+2020-09-02T17:33:06.372+0300 [DEBUG] plugin: using plugin: version=5
+2020/09/02 17:33:06 [TRACE] GRPCProvider: GetSchema
+2020-09-02T17:33:06.616+0300 [TRACE] plugin.stdio: waiting for stdio data
+2020-09-02T17:33:06.634+0300 [WARN]  plugin.stdio: received EOF, stopping recv loop: err="rpc error: code = Unimplemented desc = unknown service plugin.GRPCStdio"
+2020/09/02 17:33:06 [TRACE] No provider meta schema returned
+2020/09/02 17:33:06 [TRACE] GRPCProvider: Close
+2020-09-02T17:33:06.902+0300 [DEBUG] plugin: plugin process exited: path=.terraform/plugins/registry.terraform.io/hashicorp/google/3.37.0/linux_amd64/terraform-provider-google_v3.37.0_x5 pid=17446
+2020-09-02T17:33:06.902+0300 [DEBUG] plugin: plugin exited
+2020/09/02 17:33:06 [TRACE] LoadSchemas: retrieving schema for provisioner "file"
+2020-09-02T17:33:06.902+0300 [DEBUG] plugin: starting plugin: path=/usr/bin/terraform args=[/usr/bin/terraform, internal-plugin, provisioner, file]
+2020-09-02T17:33:06.902+0300 [DEBUG] plugin: plugin started: path=/usr/bin/terraform pid=17451
+2020-09-02T17:33:06.902+0300 [DEBUG] plugin: waiting for RPC address: path=/usr/bin/terraform
+2020-09-02T17:33:07.032+0300 [DEBUG] plugin: using plugin: version=5
+2020-09-02T17:33:07.033+0300 [TRACE] plugin.stdio: waiting for stdio data
+2020-09-02T17:33:07.035+0300 [WARN]  plugin.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = transport is closing"
+2020-09-02T17:33:07.039+0300 [DEBUG] plugin: plugin process exited: path=/usr/bin/terraform pid=17451
+2020-09-02T17:33:07.039+0300 [DEBUG] plugin: plugin exited
+2020/09/02 17:33:07 [TRACE] LoadSchemas: retrieving schema for provisioner "remote-exec"
+2020-09-02T17:33:07.039+0300 [DEBUG] plugin: starting plugin: path=/usr/bin/terraform args=[/usr/bin/terraform, internal-plugin, provisioner, remote-exec]
+2020-09-02T17:33:07.040+0300 [DEBUG] plugin: plugin started: path=/usr/bin/terraform pid=17464
+2020-09-02T17:33:07.040+0300 [DEBUG] plugin: waiting for RPC address: path=/usr/bin/terraform
+2020-09-02T17:33:07.123+0300 [DEBUG] plugin: using plugin: version=5
+2020-09-02T17:33:07.124+0300 [TRACE] plugin.stdio: waiting for stdio data
+2020-09-02T17:33:07.126+0300 [WARN]  plugin.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = transport is closing"
+2020-09-02T17:33:07.130+0300 [DEBUG] plugin: plugin process exited: path=/usr/bin/terraform pid=17464
+2020-09-02T17:33:07.130+0300 [DEBUG] plugin: plugin exited
+2020/09/02 17:33:07 [TRACE] terraform.NewContext: complete
+2020/09/02 17:33:07 [DEBUG] backend/local: will prompt for input of unset required variables [project public_key_path disk_image]
+2020/09/02 17:33:07 [DEBUG] command: asking for input: "var.disk_image"
+2020/09/02 17:33:13 [WARN] backend/local: Failed to request user input for variable "disk_image": interrupted
+2020/09/02 17:33:13 [WARN] backend/local: Failed to request user input for variable "project": interrupted
+2020/09/02 17:33:13 [WARN] backend/local: Failed to request user input for variable "public_key_path": interrupted
+2020/09/02 17:33:13 [TRACE] backend/local: finished building terraform.Context
+2020/09/02 17:33:13 [TRACE] backend/local: requesting interactive input, if necessary
+2020/09/02 17:33:13 [TRACE] Context.Input: Prompting for provider arguments
+2020/09/02 17:33:13 [TRACE] Context.Input: Provider provider.google declared at main.tf:5,1-18
+2020/09/02 17:33:13 [TRACE] Context.Input: Input for provider.google: map[string]cty.Value{}
+2020/09/02 17:33:13 [TRACE] backend/local: running validation operation
+panic: runtime error: invalid memory address or nil pointer dereference
+[signal SIGSEGV: segmentation violation code=0x1 addr=0x90 pc=0xb20d33]
+
+goroutine 15 [running]:
+github.com/hashicorp/terraform/terraform.(*Context).acquireRun(0x0, 0x26cedf8, 0x8, 0x0)
+	/home/circleci/project/project/terraform/context.go:710 +0x43
+github.com/hashicorp/terraform/terraform.(*Context).Validate(0x0, 0x0, 0x0, 0x0)
+	/home/circleci/project/project/terraform/context.go:656 +0x80
+github.com/hashicorp/terraform/backend/local.(*Local).context(0xc000414dd0, 0xc000145dc0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
+	/home/circleci/project/project/backend/local/backend_local.go:148 +0xbb0
+github.com/hashicorp/terraform/backend/local.(*Local).opPlan(0xc000414dd0, 0x2ce3260, 0xc0005f5500, 0x2ce3260, 0xc0005f5540, 0xc000145dc0, 0xc0005f54c0)
+	/home/circleci/project/project/backend/local/backend_plan.go:72 +0x2c1
+github.com/hashicorp/terraform/backend/local.(*Local).Operation.func1(0xc0005f9e40, 0xc0005f9e50, 0xc0005f9e60, 0xc000414dd0, 0xc0005f9e30, 0x2ce3260, 0xc0005f5500, 0x2ce3260, 0xc0005f5540, 0xc000145dc0, ...)
+	/home/circleci/project/project/backend/local/backend.go:340 +0xe8
+created by github.com/hashicorp/terraform/backend/local.(*Local).Operation
+	/home/circleci/project/project/backend/local/backend.go:334 +0x366

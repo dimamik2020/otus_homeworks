@@ -9,17 +9,45 @@ provider "google" {
   project = var.project
   region  = var.region
 }
+
+resource "google_compute_instance_group" "app_group" {
+  name        = "reddit-app-servers"
+  description = "Terraform test instance group"
+
+  instances = [
+    "${google_compute_instance.app.self_link}",
+    "${google_compute_instance.app2.self_link}",
+  ]
+
+  named_port {
+    name = "http"
+    port = "8080"
+  }
+
+  named_port {
+    name = "https"
+    port = "8443"
+  }
+
+  zone = "us-central1-a"
+}
+
+
+
+
+
 resource "google_compute_instance" "app" {
-  name         = "reddit-app-terraformed"
+  count        = var.instance_count
+  name         = "reddit-app-terraformed-${count.index+1}"
   machine_type = "f1-micro"
   zone         = var.zone
-  tags         = ["reddit-app"]
+  tags         = ["reddit-app-${count.index+1}"]
+
 
   metadata = {
     # путь до публичного ключа
     ssh-keys = "Dima:${file(var.public_key_path)}"
-    ssh-keys = "Dima2:${file(var.public_key_path)}"
-
+ 
   }
   # определение загрузочного диска
   boot_disk {
