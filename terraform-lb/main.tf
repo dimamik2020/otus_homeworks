@@ -10,7 +10,8 @@ provider "google" {
   region  = var.region
 }
 resource "google_compute_instance" "app" {
-  name         = "reddit-app-terraformed"
+  count        = var.instance_count
+  name         = "reddit-app-terraformed-${count.index+1}"
   machine_type = "f1-micro"
   zone         = var.zone
   tags         = ["reddit-app"]
@@ -18,7 +19,6 @@ resource "google_compute_instance" "app" {
   metadata = {
     # путь до публичного ключа
     ssh-keys = "Dima:${file(var.public_key_path)}"
-    ssh-keys = "Dima2:${file(var.public_key_path)}"
 
   }
   # определение загрузочного диска
@@ -37,7 +37,9 @@ resource "google_compute_instance" "app" {
   }
 
   connection {
-    host  = google_compute_instance.app.network_interface.0.access_config.0.nat_ip
+## !!! Ссылки через self при наличии count !!!
+##    host  = google_compute_instance.app[count.index].network_interface.0.access_config.0.nat_ip - так работать не будет!
+    host  = self.network_interface.0.access_config.0.nat_ip
     type  = "ssh"
     user  = "Dima"
     agent = false

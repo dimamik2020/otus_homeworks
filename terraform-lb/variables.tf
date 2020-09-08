@@ -26,6 +26,6 @@ variable "private_key_path" {
 
 variable "instance_count" {
   #number of instances
-  default = "2"
+  default = "3"
 
 }
