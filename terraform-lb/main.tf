@@ -9,6 +9,7 @@ provider "google" {
   project = var.project
   region  = var.region
 }
+
 resource "google_compute_instance" "app" {
   count        = var.instance_count
   name         = "reddit-app-terraformed-${count.index+1}"
@@ -55,6 +56,24 @@ resource "google_compute_instance" "app" {
     script = "files/deploy.sh"
   }
 
+}
+
+## Попытка создать группу и добавить в неё инстансы
+resource "google_compute_instance_group" "app-group" {
+  name        = "reddit-app-group"
+  description = "reddit app group"
+
+  instances = [
+    for i in google_compute_instance.app[*].id:
+    i
+  ]
+
+  named_port {
+    name = "http"
+    port = "9292"
+  }
+
+  zone = var.zone
 }
 
 resource "google_compute_firewall" "firewall_puma" {
