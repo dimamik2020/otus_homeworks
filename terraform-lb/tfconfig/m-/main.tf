@@ -12,10 +12,10 @@ provider "google" {
 
 resource "google_compute_instance" "app" {
   count        = var.instance_count
-  name         = "reddit-app-terraformed-${count.index + 1}"
+  name         = "reddit-app-terraformed-${count.index+1}"
   machine_type = "f1-micro"
   zone         = var.zone
-  tags         = ["reddit-app", "allow-health-check"]
+  tags         = ["reddit-app","allow-health-check"]
 
   metadata = {
     # путь до публичного ключа
@@ -38,9 +38,9 @@ resource "google_compute_instance" "app" {
   }
 
   connection {
-    ## !!! Ссылки через self при наличии count !!!
-    ##    host  = google_compute_instance.app[count.index].network_interface.0.access_config.0.nat_ip - так работать не будет!
-    ## Expressions in connection blocks cannot refer to their parent resource by name. Instead, they can use the special self object.
+## !!! Ссылки через self при наличии count !!!
+##    host  = google_compute_instance.app[count.index].network_interface.0.access_config.0.nat_ip - так работать не будет!
+## Expressions in connection blocks cannot refer to their parent resource by name. Instead, they can use the special self object.
     host  = self.network_interface.0.access_config.0.nat_ip
     type  = "ssh"
     user  = "Dima"
@@ -65,7 +65,7 @@ resource "google_compute_instance_group" "app-group" {
   description = "reddit app group"
 
   instances = [
-    for i in google_compute_instance.app[*].id :
+    for i in google_compute_instance.app[*].id:
     i
   ]
 
@@ -92,61 +92,11 @@ resource "google_compute_firewall" "firewall_puma" {
   target_tags = ["reddit-app"]
 }
 resource "google_compute_firewall" "firewall_allow_health_check" {
-  name    = "allow-health-check"
+  name = "allow-health-check"
   network = "default"
   allow {
     protocol = "tcp"
   }
-  source_ranges = ["130.211.0.0/22", "35.191.0.0/16"]
-  target_tags   = ["allow-health-check"]
-}
-
-resource "google_compute_address" "lb_address" {
-  name   = "ipv4-address"
-  region = var.region
-}
-
-resource "google_compute_health_check" "http_health_check" {
-  name = "http-health-check"
-
-  timeout_sec        = 1
-  check_interval_sec = 1
-
-  http_health_check {
-    port = 9292
-  }
-}
-
-resource "google_compute_region_backend_service" "region_backend_service" {
-  region                = var.region
-  name                  = "region-backend-service"
-  health_checks         = [google_compute_health_check.http_health_check.id]
-  protocol              = "HTTP"
-  load_balancing_scheme = "INTERNAL_MANAGED"
-  locality_lb_policy    = "ROUND_ROBIN"
-
-  backend {
-    group           = google_compute_instance_group.app-group.id
-    balancing_mode  = "UTILIZATION"
-    capacity_scaler = 1.0
-  }
-}
-
-resource "google_compute_region_url_map" "regionurlmap" {
-  name            = "regionurlmap"
-  default_service = google_compute_region_backend_service.region_backend_service.id
-}
-
-resource "google_compute_region_target_http_proxy" "http_proxy" {
-  region  = var.region
-  name    = "http-proxy"
-  url_map = google_compute_region_url_map.regionurlmap.id
-}
-
-resource "google_compute_forwarding_rule" "global_forwarding_rule" {
-  name       = "global-forwarding-rule"
-  region     = var.region
-  target     = google_compute_region_target_http_proxy.http_proxy.id
-  port_range = "9292"
-  ip_address = google_compute_address.lb_address.address
+  source_ranges = ["130.211.0.0/22","35.191.0.0/16"]
+  target_tags = ["allow-health-check"]
 }
