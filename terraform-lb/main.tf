@@ -40,6 +40,7 @@ resource "google_compute_instance" "app" {
   connection {
 ## !!! Ссылки через self при наличии count !!!
 ##    host  = google_compute_instance.app[count.index].network_interface.0.access_config.0.nat_ip - так работать не будет!
+## Expressions in connection blocks cannot refer to their parent resource by name. Instead, they can use the special self object.
     host  = self.network_interface.0.access_config.0.nat_ip
     type  = "ssh"
     user  = "Dima"
@@ -58,7 +59,7 @@ resource "google_compute_instance" "app" {
 
 }
 
-## Попытка создать группу и добавить в неё инстансы
+## Создаёт группу и добавляет инстансы
 resource "google_compute_instance_group" "app-group" {
   name        = "reddit-app-group"
   description = "reddit app group"
