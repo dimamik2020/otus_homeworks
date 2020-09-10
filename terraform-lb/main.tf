@@ -49,13 +49,15 @@ resource "google_compute_instance" "app" {
     private_key = file(var.private_key_path)
   }
 
-  provisioner "file" {
-    source      = "../packer/puma.service"
-    destination = "/tmp/puma.service"
-  }
-  provisioner "remote-exec" {
-    script = "files/deploy.sh"
-  }
+
+  ## Мы ж предполагаем immutable, так-что без provisioner
+  # provisioner "file" {
+  #   source      = "../packer/puma.service"
+  #   destination = "/tmp/puma.service"
+  # }
+  # provisioner "remote-exec" {
+  #   script = "files/deploy.sh"
+  # }
 
 }
 
@@ -117,13 +119,11 @@ resource "google_compute_health_check" "http_health_check" {
   }
 }
 
-resource "google_compute_region_backend_service" "region_backend_service" {
-  region                = var.region
-  name                  = "region-backend-service"
-  health_checks         = [google_compute_health_check.http_health_check.id]
-  protocol              = "HTTP"
-  load_balancing_scheme = "INTERNAL_MANAGED"
-  locality_lb_policy    = "ROUND_ROBIN"
+resource "google_compute_backend_service" "backend_service" {
+  name          = "backend-service"
+  health_checks = [google_compute_health_check.http_health_check.id]
+  protocol      = "HTTP"
+  port_name     = "http"
 
   backend {
     group           = google_compute_instance_group.app-group.id
@@ -132,21 +132,19 @@ resource "google_compute_region_backend_service" "region_backend_service" {
   }
 }
 
-resource "google_compute_region_url_map" "regionurlmap" {
-  name            = "regionurlmap"
-  default_service = google_compute_region_backend_service.region_backend_service.id
+resource "google_compute_url_map" "urlmap" {
+  name            = "urlmap"
+  default_service = google_compute_backend_service.backend_service.id
 }
 
-resource "google_compute_region_target_http_proxy" "http_proxy" {
-  region  = var.region
+resource "google_compute_target_http_proxy" "http_proxy" {
   name    = "http-proxy"
-  url_map = google_compute_region_url_map.regionurlmap.id
+  url_map = google_compute_url_map.urlmap.id
 }
 
-resource "google_compute_forwarding_rule" "global_forwarding_rule" {
+resource "google_compute_global_forwarding_rule" "global_forwarding_rule" {
   name       = "global-forwarding-rule"
-  region     = var.region
-  target     = google_compute_region_target_http_proxy.http_proxy.id
+  target     = google_compute_target_http_proxy.http_proxy.id
   port_range = "9292"
   ip_address = google_compute_address.lb_address.address
 }

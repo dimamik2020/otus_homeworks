@@ -4,7 +4,7 @@ variable "project" {
 variable "region" {
   description = "Region"
   # Значение по умолчанию
-  default = "europe-west2"
+  default = "europe-west1"
 }
 variable "public_key_path" {
   # Описание переменной
@@ -16,7 +16,7 @@ variable "disk_image" {
 
 variable "zone" {
   # Zone for resources
-  default = "europe-west2-c"
+  default = "europe-west1-c"
 }
 
 variable "private_key_path" {
