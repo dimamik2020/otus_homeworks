@@ -103,12 +103,11 @@ resource "google_compute_firewall" "firewall_allow_health_check" {
   target_tags   = ["allow-health-check"]
 }
 
-resource "google_compute_address" "lb_address" {
+resource "google_compute_global_address" "lb_address" {
   name   = "ipv4-address"
-  region = var.region
 }
 
-resource "google_compute_health_check" "http_health_check" {
+resource "google_compute_region_health_check" "http_health_check" {
   name = "http-health-check"
 
   timeout_sec        = 1
@@ -119,12 +118,13 @@ resource "google_compute_health_check" "http_health_check" {
   }
 }
 
-resource "google_compute_backend_service" "backend_service" {
+resource "google_compute_region_backend_service" "backend_service" {
+  region = var.region
   name          = "backend-service"
-  health_checks = [google_compute_health_check.http_health_check.id]
+  health_checks = [google_compute_region_health_check.http_health_check.id]
   protocol      = "HTTP"
   port_name     = "http"
-
+  load_balancing_scheme  = "INTERNAL_MANAGED"
   backend {
     group           = google_compute_instance_group.app-group.id
     balancing_mode  = "UTILIZATION"
@@ -132,19 +132,29 @@ resource "google_compute_backend_service" "backend_service" {
   }
 }
 
-resource "google_compute_url_map" "urlmap" {
+resource "google_compute_region_url_map" "urlmap" {
   name            = "urlmap"
-  default_service = google_compute_backend_service.backend_service.id
+  default_service = google_compute_region_backend_service.backend_service.id
 }
 
-resource "google_compute_target_http_proxy" "http_proxy" {
+resource "google_compute_region_target_http_proxy" "http_proxy" {
   name    = "http-proxy"
-  url_map = google_compute_url_map.urlmap.id
+  url_map = google_compute_region_url_map.urlmap.id
 }
 
-resource "google_compute_global_forwarding_rule" "global_forwarding_rule" {
-  name       = "global-forwarding-rule"
-  target     = google_compute_target_http_proxy.http_proxy.id
-  port_range = "9292"
-  ip_address = google_compute_address.lb_address.address
+# resource "google_compute_global_forwarding_rule" "forwarding_rule" {
+#   name       = "forwarding-rule"
+#   target     = google_compute_region_target_http_proxy.http_proxy.id
+# #  port_range = "9292"
+#   ip_address = google_compute_global_address.lb_address.address
+# }
+
+resource "google_compute_global_forwarding_rule" "forwarding_rule" {
+#  provider              = google-beta
+  name                  = "forwarding-rule"
+  target                = google_compute_region_target_http_proxy.http_proxy.id
+  port_range            = "80"
+  load_balancing_scheme = "INTERNAL_SELF_MANAGED"
+  ip_address            = "0.0.0.0"
+
 }
