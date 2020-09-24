@@ -29,3 +29,13 @@ variable "instance_count" {
   default = "2"
 
 }
+
+variable "app_disk_image" {
+description = "Disk image for reddit app"
+default = "app-reddit-base"
+}
+
+variable "db_disk_image" {
+  description = "Disk image for reddit db"
+  default = "db-reddit-base"
+}
