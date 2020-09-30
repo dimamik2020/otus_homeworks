@@ -6,8 +6,3 @@ variable "region" {
   # Значение по умолчанию
   default = "europe-west2"
 }
-variable "zone" {
-  # Zone for resources
-  default = "europe-west2-c"
-}
-

@@ -1,0 +1,25 @@
+{
+
+    "variables": {
+    "DB_PACKER_BUILD": "{{env `DB_PACKER_BUILD`}}"
+    },
+    "builders": [
+        {
+            "type": "googlecompute",
+            "project_id": "otus-hometasks",
+            "image_name": "{{user `DB_PACKER_BUILD`}}",
+            "image_family": "db-reddit-base",
+            "source_image_family": "ubuntu-1604-lts",
+            "zone": "europe-west1-c",
+            "ssh_username": "Dima",
+            "machine_type": "f1-micro"
+        }
+    ],
+    "provisioners": [
+		{
+            "type": "shell",
+            "script": "./scripts/install_mongodb.sh",
+            "execute_command": "sudo {{.Path}}"
+        }
+    ]
+}
