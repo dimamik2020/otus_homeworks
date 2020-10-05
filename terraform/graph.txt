@@ -1,0 +1,74 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] module.storage-bucket.data.google_client_config.current (expand)" [label = "module.storage-bucket.data.google_client_config.current", shape = "box"]
+		"[root] module.storage-bucket.google_storage_bucket.bucket_box (expand)" [label = "module.storage-bucket.google_storage_bucket.bucket_box", shape = "box"]
+		"[root] module.storage-bucket.google_storage_bucket.logging (expand)" [label = "module.storage-bucket.google_storage_bucket.logging", shape = "box"]
+		"[root] module.storage-bucket.google_storage_bucket_acl.bucket_acl (expand)" [label = "module.storage-bucket.google_storage_bucket_acl.bucket_acl", shape = "box"]
+		"[root] module.storage-bucket.google_storage_bucket_acl.log_bucket_acl (expand)" [label = "module.storage-bucket.google_storage_bucket_acl.log_bucket_acl", shape = "box"]
+		"[root] provider[\"registry.terraform.io/hashicorp/google\"]" [label = "provider[\"registry.terraform.io/hashicorp/google\"]", shape = "diamond"]
+		"[root] var.project" [label = "var.project", shape = "note"]
+		"[root] var.region" [label = "var.region", shape = "note"]
+		"[root] var.zone" [label = "var.zone", shape = "note"]
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] module.storage-bucket (close)"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.storage-bucket_url (expand)"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] var.zone"
+		"[root] module.storage-bucket (close)" -> "[root] module.storage-bucket.google_storage_bucket_acl.bucket_acl (expand)"
+		"[root] module.storage-bucket (close)" -> "[root] module.storage-bucket.google_storage_bucket_acl.log_bucket_acl (expand)"
+		"[root] module.storage-bucket (close)" -> "[root] module.storage-bucket.output.bucket_name (expand)"
+		"[root] module.storage-bucket (close)" -> "[root] module.storage-bucket.output.log_bucket_name (expand)"
+		"[root] module.storage-bucket (close)" -> "[root] module.storage-bucket.output.self_link (expand)"
+		"[root] module.storage-bucket (close)" -> "[root] module.storage-bucket.output.url (expand)"
+		"[root] module.storage-bucket (close)" -> "[root] module.storage-bucket.var.lifecycle_rules (expand)"
+		"[root] module.storage-bucket (close)" -> "[root] module.storage-bucket.var.logging_enabled (expand)"
+		"[root] module.storage-bucket.data.google_client_config.current (expand)" -> "[root] module.storage-bucket (expand)"
+		"[root] module.storage-bucket.data.google_client_config.current (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/google\"]"
+		"[root] module.storage-bucket.google_storage_bucket.bucket_box (expand)" -> "[root] module.storage-bucket.data.google_client_config.current (expand)"
+		"[root] module.storage-bucket.google_storage_bucket.bucket_box (expand)" -> "[root] module.storage-bucket.local.log_bucket_name (expand)"
+		"[root] module.storage-bucket.google_storage_bucket.bucket_box (expand)" -> "[root] module.storage-bucket.var.force_destroy (expand)"
+		"[root] module.storage-bucket.google_storage_bucket.bucket_box (expand)" -> "[root] module.storage-bucket.var.labels (expand)"
+		"[root] module.storage-bucket.google_storage_bucket.bucket_box (expand)" -> "[root] module.storage-bucket.var.location (expand)"
+		"[root] module.storage-bucket.google_storage_bucket.bucket_box (expand)" -> "[root] module.storage-bucket.var.project (expand)"
+		"[root] module.storage-bucket.google_storage_bucket.bucket_box (expand)" -> "[root] module.storage-bucket.var.storage_class (expand)"
+		"[root] module.storage-bucket.google_storage_bucket.bucket_box (expand)" -> "[root] module.storage-bucket.var.versioning_enabled (expand)"
+		"[root] module.storage-bucket.google_storage_bucket.logging (expand)" -> "[root] module.storage-bucket.data.google_client_config.current (expand)"
+		"[root] module.storage-bucket.google_storage_bucket.logging (expand)" -> "[root] module.storage-bucket.local.log_bucket_name (expand)"
+		"[root] module.storage-bucket.google_storage_bucket.logging (expand)" -> "[root] module.storage-bucket.var.force_destroy (expand)"
+		"[root] module.storage-bucket.google_storage_bucket.logging (expand)" -> "[root] module.storage-bucket.var.labels (expand)"
+		"[root] module.storage-bucket.google_storage_bucket.logging (expand)" -> "[root] module.storage-bucket.var.location (expand)"
+		"[root] module.storage-bucket.google_storage_bucket.logging (expand)" -> "[root] module.storage-bucket.var.project (expand)"
+		"[root] module.storage-bucket.google_storage_bucket_acl.bucket_acl (expand)" -> "[root] module.storage-bucket.google_storage_bucket.bucket_box (expand)"
+		"[root] module.storage-bucket.google_storage_bucket_acl.bucket_acl (expand)" -> "[root] module.storage-bucket.var.default_acl (expand)"
+		"[root] module.storage-bucket.google_storage_bucket_acl.bucket_acl (expand)" -> "[root] module.storage-bucket.var.role_entity (expand)"
+		"[root] module.storage-bucket.google_storage_bucket_acl.log_bucket_acl (expand)" -> "[root] module.storage-bucket.google_storage_bucket.logging (expand)"
+		"[root] module.storage-bucket.google_storage_bucket_acl.log_bucket_acl (expand)" -> "[root] module.storage-bucket.var.default_acl (expand)"
+		"[root] module.storage-bucket.google_storage_bucket_acl.log_bucket_acl (expand)" -> "[root] module.storage-bucket.var.role_entity (expand)"
+		"[root] module.storage-bucket.local.log_bucket_name (expand)" -> "[root] module.storage-bucket.var.bucket_name (expand)"
+		"[root] module.storage-bucket.output.bucket_name (expand)" -> "[root] module.storage-bucket.google_storage_bucket.bucket_box (expand)"
+		"[root] module.storage-bucket.output.log_bucket_name (expand)" -> "[root] module.storage-bucket.google_storage_bucket.logging (expand)"
+		"[root] module.storage-bucket.output.self_link (expand)" -> "[root] module.storage-bucket.google_storage_bucket.bucket_box (expand)"
+		"[root] module.storage-bucket.output.url (expand)" -> "[root] module.storage-bucket.google_storage_bucket.bucket_box (expand)"
+		"[root] module.storage-bucket.var.bucket_name (expand)" -> "[root] local.timestamp (expand)"
+		"[root] module.storage-bucket.var.bucket_name (expand)" -> "[root] module.storage-bucket (expand)"
+		"[root] module.storage-bucket.var.bucket_name (expand)" -> "[root] var.project"
+		"[root] module.storage-bucket.var.default_acl (expand)" -> "[root] module.storage-bucket (expand)"
+		"[root] module.storage-bucket.var.force_destroy (expand)" -> "[root] module.storage-bucket (expand)"
+		"[root] module.storage-bucket.var.labels (expand)" -> "[root] module.storage-bucket (expand)"
+		"[root] module.storage-bucket.var.lifecycle_rules (expand)" -> "[root] module.storage-bucket (expand)"
+		"[root] module.storage-bucket.var.location (expand)" -> "[root] module.storage-bucket (expand)"
+		"[root] module.storage-bucket.var.logging_enabled (expand)" -> "[root] module.storage-bucket (expand)"
+		"[root] module.storage-bucket.var.project (expand)" -> "[root] module.storage-bucket (expand)"
+		"[root] module.storage-bucket.var.role_entity (expand)" -> "[root] module.storage-bucket (expand)"
+		"[root] module.storage-bucket.var.storage_class (expand)" -> "[root] module.storage-bucket (expand)"
+		"[root] module.storage-bucket.var.versioning_enabled (expand)" -> "[root] module.storage-bucket (expand)"
+		"[root] output.storage-bucket_url (expand)" -> "[root] module.storage-bucket.output.url (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/google\"] (close)" -> "[root] module.storage-bucket.google_storage_bucket_acl.bucket_acl (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/google\"] (close)" -> "[root] module.storage-bucket.google_storage_bucket_acl.log_bucket_acl (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/google\"]" -> "[root] var.project"
+		"[root] provider[\"registry.terraform.io/hashicorp/google\"]" -> "[root] var.region"
+		"[root] root" -> "[root] meta.count-boundary (EachMode fixup)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/google\"] (close)"
+	}
+}
+
