@@ -48,3 +48,13 @@ README.md
 "... Создайте файл lb.tf и опишите в нем в коде terraform
 создание HTTP балансировщика...
 ..."
+
+Задание со * (09.Практика.pdf (хранение стейта в storage)
+
+../terraform/
+  storage-bucket.tf создаёт storage
+  prod/ - создаёт два инстанса в окружении prod (доступ с одного IP для SSH)
+  stage/ - открыт доступ по ssh
+  modules/ - модули
+  ../storage-bucket/ - переписанный под tf 0.13 модуль из реестра tf
+         
