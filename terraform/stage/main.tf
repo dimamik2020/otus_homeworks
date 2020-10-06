@@ -10,7 +10,21 @@ provider "google" {
   region  = var.region
 }
 
+resource "google_compute_address" "db_internal_ip" {
+  name         = "db-internal-ip"
+  address_type = "INTERNAL"
+
+}
+
+resource "google_compute_address" "app_internal_ip" {
+  name         = "app-internal-ip"
+  address_type = "INTERNAL"
+
+
+}
+
 module "app" {
+  depends_on       = [google_compute_address.app_internal_ip]
   source           = "../modules/app"
   public_key_path  = var.public_key_path
   zone             = var.zone
@@ -19,6 +33,7 @@ module "app" {
 }
 
 module "db" {
+  depends_on      = [google_compute_address.db_internal_ip]
   source          = "../modules/db"
   public_key_path = var.public_key_path
   zone            = var.zone
