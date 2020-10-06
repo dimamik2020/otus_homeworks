@@ -10,3 +10,8 @@ variable "public_key_path" {
   # Описание переменной
   description = "Path to the public key used for ssh access"
 }
+
+variable "db_internal_ip" {
+  # Описание переменной
+  description = "Database internal IP"
+}

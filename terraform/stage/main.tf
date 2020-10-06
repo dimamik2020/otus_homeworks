@@ -16,15 +16,8 @@ resource "google_compute_address" "db_internal_ip" {
 
 }
 
-resource "google_compute_address" "app_internal_ip" {
-  name         = "app-internal-ip"
-  address_type = "INTERNAL"
-
-
-}
 
 module "app" {
-  depends_on       = [google_compute_address.app_internal_ip]
   source           = "../modules/app"
   public_key_path  = var.public_key_path
   zone             = var.zone
@@ -38,6 +31,9 @@ module "db" {
   public_key_path = var.public_key_path
   zone            = var.zone
   db_disk_image   = var.db_disk_image
+  # Internal address for db module
+  db_internal_ip  = google_compute_address.db_internal_ip.address
+
 }
 
 module "vpc" {

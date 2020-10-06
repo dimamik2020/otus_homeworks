@@ -1,8 +1,8 @@
 resource "google_compute_instance" "db" {
-  name = "reddit-db-terraformed"
+  name         = "reddit-db-terraformed"
   machine_type = "f1-micro"
-  zone = var.zone
-  tags = ["reddit-db"]
+  zone         = var.zone
+  tags         = ["reddit-db"]
   boot_disk {
     initialize_params {
       image = var.db_disk_image
@@ -10,7 +10,10 @@ resource "google_compute_instance" "db" {
   }
   network_interface {
     network = "default"
-    access_config  {}
+
+    # internal_ip
+    network_ip = var.db_internal_ip
+    access_config {}
   }
   metadata = {
     # путь до публичного ключа
