@@ -15,3 +15,7 @@ variable "private_key_path" {
   # private key path
   description = "Path to private key"
 }
+
+variable "db_internal_ip" {
+  description = "Database internal IP"
+}

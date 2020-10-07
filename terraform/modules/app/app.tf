@@ -7,7 +7,7 @@ resource "google_compute_instance" "app" {
   metadata = {
     # путь до публичного ключа
     ssh-keys = "Dima:${file(var.public_key_path)}"
-
+    startup-script  = "echo 'export DATABASE_URL=${var.db_internal_ip}:27017' > /etc/profile.d/db_ip_set.sh && sudo systemctl restart puma"
   }
   # определение загрузочного диска
   boot_disk {

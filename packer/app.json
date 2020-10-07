@@ -12,16 +12,18 @@
             "source_image_family": "ubuntu-1604-lts",
             "zone": "europe-west1-c",
             "ssh_username": "Dima",
-            "machine_type": "f1-micro"
+            "machine_type": "f1-micro",
+            "tags": ["terraform"]
+
         }
     ],
     "provisioners": [
 	{
-	"type": "file",
-	"source": "./packer/puma.service",
-	"destination": "/tmp/puma.service"
-	},
-	{
+	 "type": "file",
+	 "source": "./packer/puma.service",
+	 "destination": "/tmp/puma.service"
+	 },
+{
 	    "type": "shell",
             "inline": ["sudo mv /tmp/puma.service /etc/systemd/system/puma.service && sudo chmod +x /etc/systemd/system/puma.service && sudo chown root:root /etc/systemd/system/puma.service"]
         },

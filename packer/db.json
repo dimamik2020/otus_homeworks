@@ -12,7 +12,8 @@
             "source_image_family": "ubuntu-1604-lts",
             "zone": "europe-west1-c",
             "ssh_username": "Dima",
-            "machine_type": "f1-micro"
+            "machine_type": "f1-micro",
+            "tags": ["terraform"]
         }
     ],
     "provisioners": [
@@ -20,6 +21,16 @@
             "type": "shell",
             "script": "./scripts/install_mongodb.sh",
             "execute_command": "sudo {{.Path}}"
+    },
+        	{
+	 "type": "file",
+	 "source": "./packer/mongod.conf",
+	 "destination": "/tmp/mongod.conf"
+	        },
+{
+	    "type": "shell",
+            "inline": ["sudo mv /tmp/mongod.conf /etc/mongod.conf && sudo chown root:root /etc/mongod.conf"]
         }
+
     ]
 }

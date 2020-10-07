@@ -10,7 +10,7 @@ Environment=RAILS_ENV=production
 ExecStart=/bin/bash -lc 'puma'
 Restart=always
 KillMode=process
-TimeoutSec=15
+TimeoutSec=45
 
 [Install]
 WantedBy=multi-user.target
