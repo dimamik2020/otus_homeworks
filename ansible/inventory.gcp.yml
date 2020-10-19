@@ -5,5 +5,7 @@ projects:
   - otus-hometasks
 auth_kind: serviceaccount
 service_account_file: /home/dimamik/github/otus_homeworks/ansible/otus-hometasks-b55845514434.json
-# filters:
-#   - machineType = f1-micro
+
+# Have no luck with 'filters'
+#filters:
+#  - machineType = f1-micro
