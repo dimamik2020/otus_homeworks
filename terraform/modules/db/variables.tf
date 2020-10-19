@@ -7,11 +7,16 @@ variable "db_disk_image" {
   default = "db-reddit-base"
 }
 variable "public_key_path" {
-  # Описание переменной
   description = "Path to the public key used for ssh access"
 }
 
 variable "db_internal_ip" {
-  # Описание переменной
   description = "Database internal IP"
+}
+
+variable "instance_label" {
+description = "Label for instance to group instances"
+
+
+
 }

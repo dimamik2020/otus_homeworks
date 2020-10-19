@@ -19,3 +19,8 @@ variable "private_key_path" {
 variable "db_internal_ip" {
   description = "Database internal IP"
 }
+
+variable "instance_label"{
+  description = "Label for instance to select group of instances"
+  default = "reddit"
+}

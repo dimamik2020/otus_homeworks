@@ -1,0 +1,8 @@
+Теперь можно сделать
+
+ansible-playbook clone.yml -i inventory.gcp.yml
+
+или
+
+ansible all -i inventory.gcp.yml -m ping
+

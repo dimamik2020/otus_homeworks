@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "otus-hometasks",
+  "private_key_id": "b55845514434cef2db46a2037fc9c592c42cd3f3",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQChUjDsRpPSUl+f\ngYqXC4Q1RZKqZKtuBGFNqCNsj5QsPqoLDXww3bj7sDjZn3tNzbY4H10sM/F3msye\nVP20E8oKD4fxKvs5xpzuxC1OAwF8b6ZbIfrMUZfWEJz88s+wBzQwMi18E0wk0Ny2\nSgRHB0379O4bsL8IYd8VFVO4Mb1niPtReN59e6UqWoeZ+xdC7m+YKTCniEKyveBN\nnHWlJMGVYgIjK1TUOwGlwr6oOo5Dgwm/VE19cMbaRXl6t/p8VQcZxtxV8jvzoWi9\nBy7Uzd4vD2wuwNWwZj+cQ47iKUoERZYt+lndUqFF3Sw0j/AwJt1msepiQm2qEPtE\njFEqKBqZAgMBAAECggEABcjNQseZaM710/cV5FUazDsz/K1H6ABltHO33h5m19BL\nvMI4HAYd6ikXMhccbtLWZWbwf74sEBe/na9v+mXu673t/Vkxxrr8U7kP4851SO7g\nRj/EFFFE/RK9l6SlivWzKsWTKRywXANA4BNsLwIldchCRRa+aXtIP7iy9rWSiZ9f\n3wNaPELXlRHFJ9wHnEfcjh5M/HlelLI2Jv1R7QzQOdXvCIuOhnkn3O2AUKDECnGF\nms8g6VKl50PFY0G38WmWpBMBqogBfm6J3qoWJz2nEVmvlCjizlVzMQVRo+ldMiRl\njV56a+fjgyZfF3sJ4a29guvgvQk9oABnPETGDUJCQQKBgQDiuX2zX1t6k+axbAy5\nEqalPltdrqozOinRu3uFV3XM9A33GSeVukRy7jaUORR3qWxigyBPhzE1uqxvtBv8\n3bqj3BFfYRZQBMLCOojzww4X0xuVwgGC2YAtZdB6moJbZ+GD6KW/Q6HI3HydZ8oQ\nd9+fZmnh6/PZGXBHK1WVcEdAOQKBgQC2Jr/6U9DIxzzFKVzYcKF3SUUXzScd7PeS\nbg3rcUoxOuFJ/+s1iw85FxEAMl6ebWXpNStQ/RPrvBbdj7EmEUJQGrbL43SP4GCO\nSOema9rGyRnWkZdRsJZlnAahSWdaloQmtFZJvkB0lQCOKZELPrTCvGorGKXleM/r\n3btHRlTtYQKBgB/NlzVXFfTu1DhlCK/ZTuj1A0nz20oOSZly7BO7Pfn+7gqQS74z\n/7ADfEJ0c0uJx3tWG20scJmx0shkglyJGcosb39qlf+pe0xVe6p93Pc4lLEAIsgh\nDFrR4lmgXNLHkpm3Q7C9ou8TBqPp0C1ZM1QfwJCBUZZNfDNvf7TTqBr5AoGAHiDa\nsDUc25jY3GOzD7nRe0GLRByS08hWSsoZU1AxzWLH0M2bwgd2RSMjlLzAGcROjvxU\nZdj2ao952LvjuUAxj75bbe35YbLjRaWZa1V7olWxCGSces6Skcv07MiPZ9Rtl1lM\nzHXDg4UByoHlk86TZ4JyrR4ukn4hJgpO58MiWQECgYANcr+zDto4nyKtkQZ4e1Jw\n6b/JyfsXDGAPgWDn0AjKNAn9ad2y7LArqF7HW6XvjnLU2VGVb+vdCXX0nrwUUKxr\nfV4bmhvAfXn/qqSjz61bqDVdFJu+RqXAhpqIFZrVe3oZoFliV+IVtHJZJGVR794t\nB6jodLopnMjA/vdOnEeJ3w==\n-----END PRIVATE KEY-----\n",
+  "client_email": "ansible@otus-hometasks.iam.gserviceaccount.com",
+  "client_id": "105909789644459755690",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ansible%40otus-hometasks.iam.gserviceaccount.com"
+}

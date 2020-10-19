@@ -39,3 +39,8 @@ variable "db_disk_image" {
   description = "Disk image for reddit db"
   default = "db-reddit-base"
 }
+
+variable "instance_label"{
+  description = "Label for instance to select group of instances"
+  default = "reddit"
+}

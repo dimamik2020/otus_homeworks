@@ -24,7 +24,7 @@ module "app" {
   app_disk_image   = var.app_disk_image
   private_key_path = var.private_key_path
   db_internal_ip   = google_compute_address.db_internal_ip.address
-
+  instance_label   = "reddit"
 }
 
 module "db" {
@@ -35,6 +35,7 @@ module "db" {
   db_disk_image   = var.db_disk_image
   # Internal address for db module
   db_internal_ip = google_compute_address.db_internal_ip.address
+  instance_label   = "reddit"
 
 }
 

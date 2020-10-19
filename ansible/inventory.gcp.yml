@@ -1,0 +1,9 @@
+plugin: gcp_compute
+region:
+  - eu-west2-c
+projects:
+  - otus-hometasks
+auth_kind: serviceaccount
+service_account_file: /home/dimamik/github/otus_homeworks/ansible/otus-hometasks-b55845514434.json
+# filters:
+#   - machineType = f1-micro
