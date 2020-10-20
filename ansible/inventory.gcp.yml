@@ -4,7 +4,7 @@ region:
 projects:
   - otus-hometasks
 auth_kind: serviceaccount
-service_account_file: /home/dimamik/github/otus_homeworks/ansible/otus-hometasks-16e88b51be5e.json
+service_account_file: /home/dimamik/github/otus_homeworks/ansible/otus-hometasks-05f5a8635559.json
 
 # Have no luck with 'filters'
 #filters:
